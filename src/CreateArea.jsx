@@ -22,13 +22,25 @@ function CreateArea(props) {
         event.preventDefault();
 
     }
+    const[clicked, setClicked] = useState(false);
+
+    function showTitle(){
+      setClicked(true)
+    }
+
+
         
   return (
 
     <div>
       <form>
-        <input onChange = {handleChange} value={addText.title} name="title" placeholder="Title" />
-        <textarea onChange={handleChange} value={addText.content} name="content" placeholder="Take a note..." rows="3" />
+        <input onClick={showTitle} onChange = {handleChange} value={addText.title} name="title" placeholder="Title" />
+        
+        
+        {clicked ?  <textarea onChange={handleChange} value={addText.content} name="content" placeholder="Take a note..." rows= {clicked ? "3" : "1"} /> : null}
+       
+
+        
         <button onClick={addNote}>Add</button>
       </form>
     </div>
